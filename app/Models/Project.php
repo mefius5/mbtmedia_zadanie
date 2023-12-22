@@ -25,4 +25,14 @@ class Project extends Model
         }
         return $client->name;
     }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class);
+    }   
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

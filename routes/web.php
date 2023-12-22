@@ -37,6 +37,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/project/update/{id}', [App\Http\Controllers\ProjectController::class, 'store'])->name('project-update');
     Route::get('/project/destroy/{id}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('project-destroy');
     Route::get('/project/show/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('project-show');
+
+    Route::post('/client/{client}/additional-logo', [App\Http\Controllers\AdditionalClientLogoController::class, 'store'])->name('additional-logo-store');
+    Route::delete('/additional-logo/destroy/{additional_logo}', [App\Http\Controllers\AdditionalClientLogoController::class, 'destroy'])->name('additional-logo-destroy');
+
+    Route::post('project/{project}/comment', [App\Http\Controllers\ProjectController::class, 'storeComment'])->name('comment-store');
+    Route::get('/project/{project}/comments', [App\Http\Controllers\ProjectController::class, 'getComments'])->name('comment-index');
+    Route::delete('/project/{project}/comment/{comment}', [App\Http\Controllers\ProjectController::class, 'deleteComment'])->name('comment-delete');
+
 });
 
 require __DIR__.'/auth.php';

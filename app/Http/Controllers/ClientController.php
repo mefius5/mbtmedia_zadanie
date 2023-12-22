@@ -85,7 +85,10 @@ class ClientController extends Controller
         if (!$client) {
             abort(404);
         }
-        return view('client.edit', compact('client'));
+
+        $additionalLogos = $client->additionalLogos;
+
+        return view('client.edit', compact('client', 'additionalLogos'));
     }
 
     /**
